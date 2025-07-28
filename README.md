@@ -13,6 +13,9 @@ Uma API construída com **NestJS**, **MongoDB**, **Mongoose** e **TypeScript** p
 ## Link da API em Produção
 # https://agricultors-nest-mongodb.onrender.com
 
+## .env
+DB_CONNECTION_STRING=SUA CONNECTION STR (mongodb://localhost:27017/yourDB será por default caso não atribua um valor)
+
 ## Instalação
 
 ```bash
