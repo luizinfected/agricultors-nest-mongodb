@@ -6,11 +6,12 @@ import {
   Param,
   Patch,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { AgricultorsService } from './agricultors.service';
 import { CreateAgricultorDto } from './dto/create-agricultor.dto';
 import { UpdateAgricultorDto } from './dto/update-agricultor.dto';
-import { ApiTags, ApiOperation, ApiParam } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiParam, ApiQuery } from '@nestjs/swagger';
 import { Agricultors } from './agricultors.schema';
 
 @ApiTags('agricultors')
@@ -26,8 +27,13 @@ export class AgricultorsController {
 
   @Get()
   @ApiOperation({ summary: 'List all agricultors' })
-  async findAll(): Promise<Agricultors[]> {
-    return this.agricultorsService.findAll();
+  @ApiQuery({ name: 'page', type: Number, required: false, default: 1 })
+  @ApiQuery({ name: 'limit', type: Number, required: false, default: 10 })
+  async findAll(
+    @Query('page') page = 1,
+    @Query('limit') limit = 10,
+  ): Promise<{ data: Agricultors[]; total: number }> {
+    return this.agricultorsService.findAll(Number(page), Number(limit));
   }
 
   @Get(':id')

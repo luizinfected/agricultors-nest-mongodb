@@ -28,8 +28,20 @@ export class AgricultorsService {
     return agricultor.save();
   }
 
-  async findAll(): Promise<Agricultors[]> {
-    return await this.agricultorsModel.find().exec();
+  async findAll(
+    page = 1,
+    limit = 10,
+  ): Promise<{ data: Agricultors[]; total: number }> {
+    const skip = (page - 1) * limit;
+
+    const [data, total] = await Promise.all([
+      this.agricultorsModel.find().skip(skip).limit(limit).exec(),
+      this.agricultorsModel.countDocuments().exec(),
+    ]);
+    return {
+      data,
+      total,
+    };
   }
 
   async find(id: string): Promise<Agricultors> {
