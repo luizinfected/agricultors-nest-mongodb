@@ -40,8 +40,10 @@ http://localhost:3003/api
 
 ## Endpoints
 
-### GET /agricultors
-
+### GET /agricultors?page=1&limit=10
+Parâmetros:
+page: página dos resultados, por padrão será 1
+limit: limite de resultados, por padrão será 10
 Retorna todos os agricultores cadastrados.
 
 ---
