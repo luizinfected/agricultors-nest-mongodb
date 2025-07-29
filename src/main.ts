@@ -16,10 +16,10 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('Agricultors API')
     .setDescription(
-      'Documentation for the Agricultors API. This API allows you to create, read, update and delete agricultors.',
+      'Documentation for the Agricultors API. This API allows you to create, read, update and delete farmers.',
     )
     .setVersion('1.0')
-    .addTag('agricultors')
+    .addTag('farmers')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);

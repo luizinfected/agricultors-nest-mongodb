@@ -40,7 +40,7 @@ http://localhost:3003/api
 
 ## Endpoints
 
-### GET /agricultors?page=1&limit=10
+### GET /farmers?page=1&limit=10
 Parâmetros:
 page: página dos resultados, por padrão será 1
 limit: limite de resultados, por padrão será 10
@@ -48,13 +48,13 @@ Retorna todos os agricultores cadastrados.
 
 ---
 
-### GET /agricultors/:id
+### GET /farmers/:id
 
 Retorna os dados de um agricultor específico com base no ID.
 
 ---
 
-### POST /agricultors
+### POST /farmers
 
 Cria um novo agricultor.
 
@@ -76,7 +76,7 @@ Cria um novo agricultor.
 
 ---
 
-### PATCH /agricultors/:id
+### PATCH /farmers/:id
 
 Atualiza os dados de um agricultor existente.
 
@@ -95,7 +95,7 @@ Atualiza os dados de um agricultor existente.
 
 ---
 
-### DELETE /agricultors/:id
+### DELETE /farmers/:id
 
 Remove um agricultor pelo ID.
 

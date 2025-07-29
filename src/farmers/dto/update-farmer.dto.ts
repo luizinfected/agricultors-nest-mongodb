@@ -1,44 +1,40 @@
 import { IsString, IsOptional, IsBoolean, IsDateString } from 'class-validator';
-import { IsCPF } from './is-cpf.decorator.validator';
+import { IsForbidden } from './is-forbidden.decorator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
-export class CreateAgricultorDto {
+export class UpdateFarmerDto {
+  @IsString()
   @ApiProperty({
     example: 'Luiz Costa',
-    description: 'Complete name of agricultor',
+    description: 'Complete name of farmer',
   })
-  @IsString()
   fullName: string;
 
-  @ApiProperty({
-    example: '22222222222',
-    description: 'agricultor CPF (unique and valid)',
-  })
-  @IsCPF({ message: 'invalid CPF' })
-  @IsString()
-  cpf: string;
-
-  @ApiPropertyOptional({
-    example: '1990-01-01',
-    description: 'Birth date (ISO Format)',
-  })
   @IsOptional()
   @IsDateString()
+  @ApiPropertyOptional({
+    example: '2002-11-08T00:00:00.000Z',
+    description: 'Birth date (ISO Format)',
+  })
   birthDate?: Date;
 
+  @IsForbidden({ message: 'You cannot change your CPF' })
+  @IsOptional()
+  cpf?: string;
+
+  @IsOptional()
+  @IsString()
   @ApiPropertyOptional({
     example: '11999999999',
     description: 'Cellphone number',
   })
-  @IsOptional()
-  @IsString()
   phone?: string;
 
-  @ApiPropertyOptional({
-    example: true,
-    description: 'Agricultor status',
-  })
   @IsOptional()
   @IsBoolean()
+  @ApiPropertyOptional({
+    example: true,
+    description: 'Farmer status',
+  })
   active: boolean;
 }

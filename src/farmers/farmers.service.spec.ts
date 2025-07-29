@@ -1,14 +1,14 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AgricultorsService } from './agricultors.service';
+import { FarmersService } from './farmers.service';
 import { getModelToken } from '@nestjs/mongoose';
 
 describe('AgricultorsService', () => {
-  let service: AgricultorsService;
+  let service: FarmersService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
-        AgricultorsService,
+        FarmersService,
         {
           provide: getModelToken('Agricultors'),
           useValue: {},
@@ -16,7 +16,7 @@ describe('AgricultorsService', () => {
       ],
     }).compile();
 
-    service = module.get<AgricultorsService>(AgricultorsService);
+    service = module.get<FarmersService>(FarmersService);
   });
 
   it('should be defined', () => {

@@ -1,10 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-export type AgricultorsDocument = Agricultors & Document;
+export type FarmersDocument = Farmers & Document;
 
 @Schema()
-export class Agricultors {
+export class Farmers {
   @Prop({ required: true })
   fullName: string;
 
@@ -21,4 +21,4 @@ export class Agricultors {
   active: boolean;
 }
 
-export const AgricultorsSchema = SchemaFactory.createForClass(Agricultors);
+export const FarmersSchema = SchemaFactory.createForClass(Farmers);
